@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Member extends Person {
     private String memberId;
     private int dueAmount;
@@ -5,24 +7,43 @@ public class Member extends Person {
     private int borrowLimit = 5;
 
 
-    Member(String memberId){
-        this(memberId,"N/A");
-        this.memberId = memberId;
+    public Member(String name,String memberId){
+        this(name,memberId,0);
     }
-    Member(String memberId, String name){
-        super(name);
-        this.memberId = memberId;
+    public Member(String name,String memberId, int age){
+        this(name,memberId,age,"N/A");
     }
-    Member(String memberId, String name, int age){
-        super(name,age);
-        this.memberId = memberId;
-    }
-    Member(String memberId, String name, int age, String email){
+    public Member(String name,String memberId, int age, String email){
         super(name,age,email);
         this.memberId = memberId;
     }
 
-    void borrowBook(Book b){
+    public void setMemberId(String memberId){
+        this.memberId = memberId;
+    }
+    public String getMemberId(){
+        return this.memberId;
+    }
+    public int getDueAmount(){
+        return this.dueAmount;
+    }
+    public void setDueAmount(int dueAmount){
+        this.dueAmount = dueAmount;
+    }
+    public int getMonthlyItemsBorrowed(){
+        return this.monthlyItemsBorrowed;
+    }
+    public void setMonthlyItemsBorrowed(int monthlyItemsBorrowed){
+        this.monthlyItemsBorrowed = monthlyItemsBorrowed;
+    }
+    public int getBorrowLimit(){
+        return this.borrowLimit;
+    }
+    public void setBorrowLimit(int borrowLimit){
+        this.borrowLimit = borrowLimit;
+    }
+
+    public void borrowBook(Book b){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of 5 Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
@@ -38,10 +59,11 @@ public class Member extends Person {
             System.out.println("\nBook :"+ b.getTitle() +" , author: "+ b.getAuthor() + " , BORROWED!");
             monthlyItemsBorrowed++;
             System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
+            b.setIsAvailable(false);
         }
 
     }
-    void borrowJournal(Journal j){
+    public void borrowJournal(Journal j){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of 5 Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
@@ -57,10 +79,11 @@ public class Member extends Person {
             System.out.println("\nJournal :"+ j.getTitle() +" , author: "+ j.getAuthor() + " , BORROWED!");
             monthlyItemsBorrowed++;
             System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
+            j.setIsAvailable(false);
         }
 
     }
-    void borrowMagazine(Magazine m){
+    public void borrowMagazine(Magazine m){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of 5 Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
@@ -76,17 +99,88 @@ public class Member extends Person {
             System.out.println("\nMagazine :"+ m.getMagazineName() +" , Of Date: "+ m.getPublishDate() + " , BORROWED!");
             monthlyItemsBorrowed++;
             System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
+            m.setIsAvailable(false);
         }
 
     }
-    void returnBook(Book b){
+    public void returnBook(Book b){
+        System.out.println("BooK: "+ b.getTitle() +" , author: "+ b.getAuthor() + " , RETURNED!");
+        System.out.println("Thank You for using our Service :)");
+        b.setIsAvailable(true);
 
     }
-    void renewMemberShip() {
+    public void returnJournal(Journal j){
+        System.out.println("Journal: "+ j.getTitle() +" , author: "+ j.getAuthor() + " , RETURNED!");
+        System.out.println("Thank You for using our Service :)");
+        j.setIsAvailable(true);
+    }
+    public void returnMagazine(Magazine m){
+        System.out.println("Magazine: "+ m.getMagazineName() +" , of Date: "+ m.getPublishDate + " , RETURNED!");
+        System.out.println("Thank You for using our Service :)");
+        m.setIsAvailable(true);
+    }
+    public void renewMemberShip() {
         monthlyItemsBorrowed = 0;
         System.out.println("Member Name: " + getName());
         System.out.println("Member ID: "+ memberId);
-        System.out.println("MemberShip Renewed!\nThe BorrowLimit has been Reseted!");
+        System.out.println("MemberxShip Renewed!\nThe BorrowLimit has been Reseted!");
         System.out.println("Your BorrowLimit : " + monthlyItemsBorrowed);
     }
+    public void lostBook(){
+        System.out.println("Book Lost Fine is 10$ !");
+        dueAmount += 10;
+        System.out.println("Your due amount is: "+dueAmount);
+    }
+    public void lostJournal(){
+        System.out.println("Journal Lost Fine is 6$ !");
+        dueAmount +=6;
+        System.out.println("Your due amount is: "+dueAmount);
+    }
+    public void lostMagazine(){
+        System.out.println("Magazine Lost Fine is 3$ !");
+        dueAmount +=3;
+        System.out.println("Your due amount is: "+dueAmount);
+    }
+
+    public void payDueAmount(int amount) {
+        if (amount > 0 && dueAmount > 0) {
+            System.out.println("Your due amount is: " + dueAmount);
+            System.out.println("You Paid Amount: " + amount);
+            dueAmount -= amount;
+            System.out.println("Your Due Amount Now : " + dueAmount);
+        }
+        else if(dueAmount < 0){
+            System.out.println("You dont have to Pay!\nYou Dont have Any DUE AMOUNT! :) ");
+            System.out.println("\tAmount returned!");
+        }
+        else if(amount < 0){
+            System.out.println("InValid Amount! Try again!");
+        }
+    }
+    @Override
+    public void showDetails(){
+        System.out.println("Member Name: "+ getName());
+        System.out.println("Member ID: "+ memberId);
+        System.out.println("Member Age: "+ getAge());
+        System.out.println("Member Email: "+ getEmail());
+        System.out.println("Member Due Amount: "+ dueAmount);
+        System.out.println("Member Borrowed Items this Month: "+ monthlyItemsBorrowed);
+    }
+    @Override
+    public void updateDetails(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Member Name: ");
+        String name = sc.nextLine();
+        setName(name);
+        System.out.println("Enter Member ID: ");
+        this.memberId = sc.nextLine();
+        System.out.println("Enter Member Age: ");
+        int age = sc.nextInt();
+        setAge(age);
+        sc.nextLine();
+        System.out.println("Enter Member Email: ");
+        String email = sc.nextLine();
+        setEmail(email);
+    }
+
 }
