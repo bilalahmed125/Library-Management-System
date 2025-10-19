@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Journal extends Publication{
     private int year;
     private String field;
+    private static int totalJournals;
 
     public Journal(String title){
         this(title,"N/A");
@@ -23,6 +24,7 @@ public class Journal extends Publication{
         super(title,author,ISBN,isAvailable);
         this.year = year;
         this.field = field;
+        totalJournals++;
     }
 
     public int getYear() {
@@ -36,6 +38,9 @@ public class Journal extends Publication{
     }
     public void setField(String field) {
         this.field = field;
+    }
+    public static int getTotalJournals() {
+        return totalJournals;
     }
 
     @Override

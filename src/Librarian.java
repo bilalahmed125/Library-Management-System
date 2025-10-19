@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Librarian extends Person{
     private String employeeId;
     private double salary;
+    private static int totalLibrarian;
+
 
     public Librarian(String name){
         this(name,"N/A");

@@ -11,7 +11,7 @@ public class Member extends Person {
     private int bookCounter;
     private int journalCounter;
     private int magazineCounter;
-
+    private static int totalMembers;
 
     public Member(String name,String memberId){
         this(name,memberId,0);
@@ -22,6 +22,7 @@ public class Member extends Person {
     public Member(String name,String memberId, int age, String email){
         super(name,age,email);
         this.memberId = memberId;
+        totalMembers++;
     }
 
     public void setMemberId(String memberId){
@@ -59,6 +60,9 @@ public class Member extends Person {
     }
     public int getMagazineCounter(){
         return this.magazineCounter;
+    }
+    public static int getTotalMembers(){
+        return totalMembers;
     }
 
     public boolean borrowBook(Book b){
@@ -131,7 +135,7 @@ public class Member extends Person {
         boolean flag = false;
         if(bookCounter != 0){                                        //searchihng book, if in member's ocupation
             for (int i = 0; i < books.length; i++) {
-                if (books[i]!= null && books[i].getISBN().equals(b.getISBN())){
+                if (books[i]!= null && books[i].getTitle().equals(b.getTitle())){
                     flag = true;
                     books[i] = null;
                     bookCounter --;
@@ -155,7 +159,7 @@ public class Member extends Person {
         boolean flag = false;
         if(journalCounter != 0){                                        //searchihng jornal, if in member's ocupation
             for (int i = 0; i < journals.length; i++) {
-                if (journals[i]!= null && journals[i].getISBN().equals(j.getISBN())){
+                if (journals[i]!= null && journals[i].getTitle().equals(j.getTitle())){
                     flag = true;
                     journals[i] = null;
                     journalCounter--;
@@ -179,7 +183,7 @@ public class Member extends Person {
         boolean flag = false;
         if(magazineCounter != 0){                                        //searchihng jornal, if in member's ocupation
             for (int i = 0; i < magazines.length; i++) {
-                if (magazines[i]!= null && magazines[i].getISBN().equals(m.getISBN())){
+                if (magazines[i]!= null && magazines[i].getMagazineName().equals(m.getMagazineName())){
                     flag = true;
                     magazines[i] = null;
                     magazineCounter--;

@@ -4,6 +4,7 @@ public class Book extends Publication{
     private int pages;
     private String language;
     private int edition;
+    private static int totalBooks;
 
     public Book(String title){
         this(title,"N/A");
@@ -28,6 +29,7 @@ public class Book extends Publication{
         this.pages = pages;
         this.language = language;
         this.edition = edition;
+        totalBooks++;
     }
 
     public int getPages() {
@@ -47,6 +49,9 @@ public class Book extends Publication{
     }
     public void setEdition(int edition) {
         this.edition = edition;
+    }
+    public static int getTotalBooks() {
+        return totalBooks;
     }
 
     @Override

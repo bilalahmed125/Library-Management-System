@@ -5,13 +5,20 @@ public class Magazine extends Publication{
     private int publishDate;
     private int publishMonth;
     private int publishYear;
+    private static int magazineCounter;
 
+    public Magazine(String magazineName){
+        this(magazineName,0,0,0000);
+        this.magazineName = magazineName;
+    }
     public Magazine(String magazineName, int publishDate, int publishMonth, int publishYear) {
         this.magazineName = magazineName;
         this.publishDate = publishDate;
         this.publishMonth = publishMonth;
         this.publishYear = publishYear;
+        magazineCounter++;
     }
+
     public String getMagazineName(){
         return this.magazineName;
     }

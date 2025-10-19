@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Student extends AcademicMember{
     private String studentID;
     private String department;
+    private static int totalStudents;
 
 
     public Student(String name, String studentID){
@@ -20,6 +21,7 @@ public class Student extends AcademicMember{
         this.department = department;
         setBorrowLimit(7);
         setAcademicID(studentID);
+        totalStudents++;
     }
 
     public String getStudentID() {
@@ -27,6 +29,9 @@ public class Student extends AcademicMember{
     }
     public void setStudentID(String studentID) {
         this.studentID = studentID;
+    }
+    public static int gettotalStudents() {
+        return totalStudents;
     }
 
     @Override

@@ -4,6 +4,7 @@ public abstract class AcademicMember extends Member{
     private String academicID;
     private String department;
 
+
     public AcademicMember(String name, String academicID){
         this(name,academicID,"N/A");
     }
