@@ -1,9 +1,11 @@
-public class Student extends Member{
+import java.util.Scanner;
+
+public class Student extends AcademicMember{
     private String studentID;
     private String department;
 
 
-    public Student(String name,String studentID){
+    public Student(String name, String studentID){
         this(name,studentID,"N/A");
     }
     public Student(String name, String studentID, String department){
@@ -13,10 +15,11 @@ public class Student extends Member{
         this(name,studentID,department,age,"N/A");
     }
     public Student(String name, String studentID, String department,int age,String email){
-        super(name,studentID,age,email);
+        super(name,studentID,department,age,email);
         this.studentID = studentID;
         this.department = department;
-
+        setBorrowLimit(7);
+        setAcademicID(studentID);
     }
 
     public String getStudentID() {
@@ -25,13 +28,48 @@ public class Student extends Member{
     public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
-    public String getDepartment() {
-        return department;
+
+    @Override
+    public double calculateDiscount(double amount){
+        System.out.println("\t20% Student Discount!");
+        amount = amount - (amount * 0.20);               //20% Student discunot
+        return amount;
     }
-    public void setDepartment(String department) {
-        this.department = department;
+    @Override
+    public void lostBook(){
+        double price;
+        price = calculateDiscount(10);
+        System.out.println("Book Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
+        addDueAmount(price);
+        System.out.println("Your due amount is: "+price);
+
+    }
+    @Override
+    public void lostJournal(){
+        double price;
+        price = calculateDiscount(6);
+        System.out.println("Journal Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
+        addDueAmount(price);
+        System.out.println("Your due amount is: "+price);
+    }
+    @Override
+    public void lostMagazine(){
+        double price;
+        price = calculateDiscount(3);
+        System.out.println("Magazine Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
+        addDueAmount(price);
+        System.out.println("Your due amount is: "+price);
     }
 
+    @Override
+    public void showDetails(){
+        super.showDetails();
+    }
+
+    @Override
+    public void updateDetails(){
+        super.updateDetails();
+    }
 
 
 }

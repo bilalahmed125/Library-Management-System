@@ -4,6 +4,9 @@ public abstract class Publication {
     private String ISBN;
     private boolean isAvailable;
 
+    public Publication(){
+        //empty helpeing method ForMagazine
+    }
     public Publication(String title){
         this(title,"N/A");
         this.title = title;
@@ -50,7 +53,7 @@ public abstract class Publication {
         isAvailable = available;
     }
 
-    public abstract void checkAvailability();
+    //public abstract void checkAvailability();
     public abstract void showDetails();
     public abstract void updateDetails();
 
