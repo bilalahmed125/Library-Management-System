@@ -62,35 +62,91 @@ public class Library {
     }
 
 
-    public void addBook(Book b) {
-        if (bookCounter < maxBooks){
-            books[bookCounter] = b;
-            System.out.println("\n\tBook: "+b.getTitle()+" , author: "+b.getAuthor());
+    public void addBook() {
+        if(bookCounter < maxBooks){
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter book Title: ");
+            String title = sc.nextLine();
+            System.out.println("Enter Book Author: ");
+            String author = sc.nextLine();
+            System.out.println("Enter BOOK ISBN: ");
+            String isbn = sc.nextLine();
+            System.out.println("Enter Book pages(int): ");
+            int pages = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter BOOK language: ");
+            String language = sc.nextLine();
+            System.out.println("Enter Book Edition(int): ");
+            int edition = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Book Availibility(yes/no): ");
+            String availibility = sc.nextLine();
+            boolean isAvailable = availibility.equalsIgnoreCase("yes")||availibility.equalsIgnoreCase("true")? true:false;
+
+            books[bookCounter] = new Book(title,author,isbn,isAvailable,pages,language,edition);               //composition...
+
+            System.out.println("\n\tBook: "+books[bookCounter].getTitle()+" , author: "+books[bookCounter].getAuthor());
             System.out.println("\n\tBook Added Successfully!");
             bookCounter++;
         }
+        else{
+            System.out.println("\n\tBOOK Filled Cannot Add more!");
+        }
     }
-    public void addJournal(Journal j){
-        if (journalCounter < maxJournals){
-            journals[journalCounter] = j;
-            System.out.println("\n\tJournal: "+j.getTitle()+" , author: "+j.getAuthor());
+    public void addJournal(){
+        if(journalCounter < maxJournals){
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Journal Title: ");
+            String title = sc.nextLine();
+            System.out.println("Enter Journal Author: ");
+            String author = sc.nextLine();
+            System.out.println("Enter Journal ISBN: ");
+            String isbn = sc.nextLine();
+            System.out.println("Enter Journal Field: ");
+            String field = sc.nextLine();
+            System.out.println("Enter Journal Year(int): ");
+            int year = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Journal Availibility(yes/no): ");
+            String availibility = sc.nextLine();
+            boolean isAvailable = availibility.equalsIgnoreCase("yes")||availibility.equalsIgnoreCase("true")? true:false;
+
+            journals[journalCounter] = new Journal(title,author,isbn,isAvailable,year,field);          //composition
+
+            System.out.println("\n\tJournal: "+journals[journalCounter].getTitle()+" , author: "+journals[journalCounter].getAuthor());
             System.out.println("\n\tJournal Added Successfully!");
             journalCounter++;
         }
+        else{
+            System.out.println("\n\tJournal FIlled Cannot Add more!");
+        }
     }
-    public void addMagazine(Magazine m){
+    public void addMagazine(){
         if(magazineCounter < maxMagazines){
-            magazines[magazineCounter] = m;
-            System.out.println("\n\tMagazine: "+m.getTitle()+" , author: "+m.getAuthor());
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Magazine Name: ");
+            String magazineName = sc.nextLine();
+            System.out.println("Enter Publish Year(int): ");
+            int publishYear = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Publish Month(int): ");
+            int publishMonth = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Publish Day(int): ");
+            int publishDay = sc.nextInt(); sc.nextLine();
+
+            magazines[magazineCounter] = new Magazine(magazineName,publishDay,publishMonth,publishYear);         //cpmostion
+
+            System.out.println("\n\tMagazine: "+magazines[magazineCounter].getMagazineName()+" , Publish Date : "+magazines[magazineCounter].getPublishDate()+"-"+magazines[magazineCounter].getPublishMonth()+"-"+magazines[magazineCounter].getPublishYear());
             System.out.println("\n\tMagazine Added Successfully!");
             magazineCounter++;
         }
+        else{
+            System.out.println("\n\tMagazines FIlled Cannot Add more!");
+        }
     }
-    public void removeBook(Book b){
+    public void removeBook(String isbn){
         if(bookCounter > 0){
             boolean flag = false;
+            Book b = null;
             for(int i = 0; i < bookCounter; i++){
-                if(books[i] == b){
+                if(books[i].getISBN().equals(isbn)){
+                    b = books[i];
                     for(int j=i ; j<bookCounter-1 ; j++){
                         books[j]=books[j+1];
                     }
@@ -103,6 +159,7 @@ public class Library {
             if(flag){
                 System.out.println("\n\tBook: "+b.getTitle()+" , author: "+b.getAuthor());
                 System.out.println("\n\tBook Removed Successfully!");
+                Book.setTotalBooks(Book.getTotalBooks()-1);
             }
             else{
                 System.out.println("\n\tUnable to Find Such BOOK! Failed to remove!");
@@ -112,11 +169,13 @@ public class Library {
             System.out.println("\n\tNo BOOKS to REMOVE!");
         }
     }
-    public void removeJournal(Journal journal){
+    public void removeJournal(String isbn){
         if(journalCounter > 0){
             boolean flag = false;
+            Journal journal = null;
             for(int i = 0; i < journalCounter; i++){
-                if(journals[i] == journal){
+                if(journals[i].getISBN().equals(isbn)){
+                    journal = journals[i];
                     for(int j=i ; j<journalCounter-1 ; j++){
                         journals[j]=journals[j+1];
                     }
@@ -129,6 +188,7 @@ public class Library {
             if(flag){
                 System.out.println("\n\tJournal: "+journal.getTitle()+" , author: "+journal.getAuthor());
                 System.out.println("\n\tJournal Removed Successfully!");
+                Journal.setTotalJournals(Journal.getTotalJournals()-1);
             }
             else{
                 System.out.println("\n\tUnable to Find Such JOURNAL! Failed to remove!");
@@ -138,11 +198,13 @@ public class Library {
             System.out.println("\n\tNo Journals to REMOVE!");
         }
     }
-    public void removeMagazine(Magazine m){
+    public void removeMagazine(String MagazineName){
         if(magazineCounter > 0){
             boolean flag = false;
+            Magazine m = null;
             for(int i = 0; i < magazineCounter; i++){
-                if(magazines[i] == m){
+                if(magazines[i].getMagazineName().equalsIgnoreCase(MagazineName)){
+                    m = magazines[i];
                     for(int j=i ; j<magazineCounter-1 ; j++){
                         magazines[j]=magazines[j+1];
                     }
@@ -155,6 +217,7 @@ public class Library {
             if(flag){
                 System.out.println("\n\tMagazine: "+m.getMagazineName()+" , Publish Date: "+m.getPublishDate()+"-"+m.getPublishMonth()+"-"+m.getPublishYear());
                 System.out.println("\n\tMagazine Removed Successfully!");
+                Magazine.setTotalMagazine(Magazine.getTotalMagazine()-1);
             }
             else{
                 System.out.println("\n\tUnable to Find Such MAGAZINE! Failed to remove!");
@@ -198,12 +261,25 @@ public class Library {
         }
     }
 
-    public void addLibrarian(Librarian lib){
+    public void addLibrarian(){
+        Scanner sc = new Scanner(System.in);
+
         if(librarianCounter < maxLibrarians){
-            librarians[librarianCounter] = lib;
-            librarianCounter++;
-            System.out.println("\tLibrarian Name: "+ lib.getName()+" , EmployeeID: "+lib.getEmployeeId()+" , ADDED!");
+            System.out.println("Enter Librarian's Name: ");
+            String name = sc.nextLine();
+            System.out.println("Enter Librarian EmployeeID : ");
+            String employeeID = sc.nextLine();
+            System.out.println("Enter Librarian Age : ");
+            int age = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Librarian email : ");
+            String email = sc.nextLine();
+            System.out.println("Enter Librarian Salary : ");
+            double salary = sc.nextDouble();  sc.nextLine();
+
+            librarians[librarianCounter]= new Librarian(name,employeeID,age,email,salary);          //composition...
+            System.out.println("\tLibrarian Name: "+ librarians[librarianCounter].getName()+" , EmployeeID: "+librarians[librarianCounter].getEmployeeId()+" , ADDED!");
             System.out.println("\n\tLibrarian Added Successfully!");
+            librarianCounter++;
         }
         else{
             System.out.println("\n\tLibrarians FILLED! Cant add more Librarians at the moment!");
@@ -227,6 +303,7 @@ public class Library {
             if(flag){
                 System.out.println("\tLibrarian Name: " + lib.getName() + " , EmployeeID: " + lib.getEmployeeId());
                 System.out.println("\n\tLibrarian REMOVED Successfully!");
+                Librarian.setTotalLibrarian(Librarian.getTotalLibrarian()-1);
             }
             else{
                 System.out.println("\n\tLibrarian Not FOUND!Cant REmove!");
@@ -262,6 +339,7 @@ public class Library {
             if(flag) {
                 System.out.println("\tMember Name: " + m.getName() + ", MemberID: " + m.getMemberId());
                 System.out.println("\n\tMember Removed Successfully!");
+                Member.setTotalMembers(Member.getTotalMembers()-1);
             }
             else{
                 System.out.println("\n\tMembers NOT FOUND!Cant REMOVE!");
@@ -299,6 +377,7 @@ public class Library {
             if(flag) {
                 System.out.println("\tStudent Name: " + s.getName() + ", StudnetID: " + s.getStudentID());
                 System.out.println("\n\tStudent Removed Successfully!");
+                Student.setTotalStudents(Student.getTotalStudents()-1);
             }
             else{
                 System.out.println("\n\tSTUDENT NOT FOUND!Cant REMOVE!");
@@ -336,6 +415,7 @@ public class Library {
             if(flag) {
                 System.out.println("\tTeacher Name: " + t.getName() + ", TeacherID: " + t.getTeacherID());
                 System.out.println("\n\tTeacher Removed Successfully!");
+                Teacher.setTotalTeachers(Teacher.getTotalTeachers()-1);
             }
             else{
                 System.out.println("\n\tTEACHER NOT FOUND!Cant REMOVE!");

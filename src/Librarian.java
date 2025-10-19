@@ -22,6 +22,7 @@ public class Librarian extends Person{
         super(name,age,email);
         this.employeeId = employeeId;
         this.salary = salary;
+        totalLibrarian++;
     }
 
     public String getEmployeeId() {
@@ -35,6 +36,12 @@ public class Librarian extends Person{
     }
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+    public static int getTotalLibrarian() {
+        return Librarian.totalLibrarian;
+    }
+    public static void setTotalLibrarian(int totalLibrarian) {
+        Librarian.totalLibrarian = totalLibrarian;
     }
 
     public void issueBook(Member m,Book b){                                       //Any method that accpets member can also accpet Student and Teacher as they are child of Member.

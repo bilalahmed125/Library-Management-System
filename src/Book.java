@@ -51,7 +51,10 @@ public class Book extends Publication{
         this.edition = edition;
     }
     public static int getTotalBooks() {
-        return totalBooks;
+        return Book.totalBooks;
+    }
+    public static void setTotalBooks(int totalBooks) {
+        Book.totalBooks = totalBooks;
     }
 
     @Override

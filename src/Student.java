@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Student extends AcademicMember{
-    private String studentID;
-    private String department;
+//    private String studentID;
+//  private String department;          both already in academicMember...
     private static int totalStudents;
 
 
@@ -17,21 +17,22 @@ public class Student extends AcademicMember{
     }
     public Student(String name, String studentID, String department,int age,String email){
         super(name,studentID,department,age,email);
-        this.studentID = studentID;
-        this.department = department;
         setBorrowLimit(7);
         setAcademicID(studentID);
         totalStudents++;
     }
 
     public String getStudentID() {
-        return studentID;
+        return getAcademicID();
     }
     public void setStudentID(String studentID) {
-        this.studentID = studentID;
+        setAcademicID(studentID);
     }
-    public static int gettotalStudents() {
-        return totalStudents;
+    public static int getTotalStudents() {
+        return Student.totalStudents;
+    }
+    public static void setTotalStudents(int totalStudents) {
+        Student.totalStudents = totalStudents;
     }
 
     @Override

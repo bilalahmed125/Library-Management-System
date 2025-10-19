@@ -5,7 +5,7 @@ public class Magazine extends Publication{
     private int publishDate;
     private int publishMonth;
     private int publishYear;
-    private static int magazineCounter;
+    private static int totalMagazine;
 
     public Magazine(String magazineName){
         this(magazineName,0,0,0000);
@@ -16,7 +16,11 @@ public class Magazine extends Publication{
         this.publishDate = publishDate;
         this.publishMonth = publishMonth;
         this.publishYear = publishYear;
-        magazineCounter++;
+        totalMagazine++;
+        setTitle(magazineName+" News");
+        setIsAvailable(true);
+        setISBN(publishYear+"-"+publishMonth+"-"+publishDate);
+        setAuthor(magazineName);
     }
 
     public String getMagazineName(){
@@ -42,6 +46,12 @@ public class Magazine extends Publication{
     }
     public void setPublishYear(int publishYear){
         this.publishYear = publishYear;
+    }
+    public static int getTotalMagazine(){
+        return Magazine.totalMagazine;
+    }
+    public static void setTotalMagazine(int totalMagazine){
+        Magazine.totalMagazine = totalMagazine;
     }
 
     @Override

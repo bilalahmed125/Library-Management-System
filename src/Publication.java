@@ -9,18 +9,12 @@ public abstract class Publication {
     }
     public Publication(String title){
         this(title,"N/A");
-        this.title = title;
     }
     public Publication(String title, String author){
         this(title,author,"N/A");
-        this.title = title;
-        this.author = author;
     }
     public Publication(String title, String author, String ISBN){
         this(title,author,ISBN,true);
-        this.title = title;
-        this.author = author;
-        this.ISBN = ISBN;
     }
     public Publication(String title, String author, String ISBN, boolean isAvailable){
         this.title = title;

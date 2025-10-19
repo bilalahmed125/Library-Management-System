@@ -1,8 +1,6 @@
 public class Teacher extends AcademicMember{
-    private String teacherID;
-    private String department;
-    private static int totalTeachers;
 
+    private static int totalTeachers;
 
     public Teacher(String name, String teacherID){
         this(name,teacherID,"N/A");
@@ -15,23 +13,23 @@ public class Teacher extends AcademicMember{
     }
     public Teacher(String name, String teacherID, String department,int age,String email){
         super(name,teacherID,department,age,email);
-        this.teacherID = teacherID;
-        this.department = department;
         setBorrowLimit(10);
         setAcademicID(teacherID);
         totalTeachers++;
     }
 
     public String getTeacherID() {
-        return teacherID;
+        return getAcademicID();
     }
     public void setTeacherID(String teacherID) {
-        this.teacherID = teacherID;
+        setAcademicID(teacherID);
     }
-    public static int totalTeachers() {
-        return totalTeachers;
+    public static int getTotalTeachers() {
+        return Teacher.totalTeachers;
     }
-    
+    public static void setTotalTeachers(int totalTeachers) {
+        Teacher.totalTeachers = totalTeachers;
+    }
     @Override
     public double getDiscount(double amount){
         System.out.println("\t10% Teacher's Discount!");

@@ -62,7 +62,10 @@ public class Member extends Person {
         return this.magazineCounter;
     }
     public static int getTotalMembers(){
-        return totalMembers;
+        return Member.totalMembers;
+    }
+    public static void setTotalMembers(int totalMembers){
+        Member.totalMembers = totalMembers;
     }
 
     public boolean borrowBook(Book b){
@@ -81,7 +84,7 @@ public class Member extends Person {
             return false;
         }
         monthlyItemsBorrowed++;
-        b.setIsAvailable(true);
+        b.setIsAvailable(false);
         books[bookCounter] = b;
         bookCounter++;
         return true;
@@ -226,7 +229,7 @@ public class Member extends Person {
             dueAmount -= amount;
             System.out.println("Your Due Amount Now : " + dueAmount);
         }
-        else if(dueAmount < 0){
+        else if(dueAmount <= 0){
             System.out.println("You dont have to Pay!\nYou Dont have Any DUE AMOUNT! :) ");
             System.out.println("\tAmount returned!");
         }

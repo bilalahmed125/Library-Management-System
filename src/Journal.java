@@ -40,7 +40,10 @@ public class Journal extends Publication{
         this.field = field;
     }
     public static int getTotalJournals() {
-        return totalJournals;
+        return Journal.totalJournals;
+    }
+    public static void setTotalJournals(int totalJournals) {
+        Journal.totalJournals = totalJournals;
     }
 
     @Override
