@@ -20,6 +20,7 @@ public abstract class Publication {
         this.title = title;
         this.author = author;
         this.ISBN = ISBN;
+        this.isAvailable = isAvailable;
     }
 
     public String getTitle(){

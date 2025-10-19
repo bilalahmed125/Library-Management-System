@@ -15,10 +15,9 @@ public abstract class AcademicMember extends Member{
         this(name,academicID,department,age,"N/A");
     }
     public AcademicMember(String name, String academicID, String department, int age, String email){
-        super(name,academicID,age,email);
+        super(name, academicID, age, email);
         this.academicID = academicID;
         this.department = department;
-        setMemberId(academicID);
     }
 
     public String getAcademicID() {

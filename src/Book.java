@@ -88,7 +88,7 @@ public class Book extends Publication{
         System.out.print("Enter " +publicationType + " language: ");
         String language = sc.nextLine();
         System.out.print("Enter " +publicationType + " edition: ");
-        int edition = sc.nextInt();
+        int edition = sc.nextInt(); sc.nextLine();
         System.out.print("Enter "+publicationType+" isAvailable (yes/no): ");
         String available = sc.nextLine();
         boolean isAvailable = available.equalsIgnoreCase("Yes") || available.equalsIgnoreCase("true") ? true : false;

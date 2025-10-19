@@ -9,7 +9,6 @@ public class Magazine extends Publication{
 
     public Magazine(String magazineName){
         this(magazineName,0,0,0000);
-        this.magazineName = magazineName;
     }
     public Magazine(String magazineName, int publishDate, int publishMonth, int publishYear) {
         this.magazineName = magazineName;
