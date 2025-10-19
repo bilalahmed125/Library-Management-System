@@ -137,10 +137,13 @@ public class Member extends Person {
     public boolean returnBook(Book b){
         boolean flag = false;
         if(bookCounter != 0){                                        //searchihng book, if in member's ocupation
-            for (int i = 0; i < books.length; i++) {
+            for (int i = 0; i < bookCounter; i++) {
                 if (books[i]!= null && books[i].getTitle().equals(b.getTitle())){
+                    for(int j=i;j<bookCounter-1;j++){
+                        books[j]=books[j+1];
+                    }
                     flag = true;
-                    books[i] = null;
+                    books[bookCounter-1] = null;
                     bookCounter --;
                     break;
                 }
@@ -161,10 +164,13 @@ public class Member extends Person {
     public boolean returnJournal(Journal j){
         boolean flag = false;
         if(journalCounter != 0){                                        //searchihng jornal, if in member's ocupation
-            for (int i = 0; i < journals.length; i++) {
+            for (int i = 0; i < journalCounter; i++) {
                 if (journals[i]!= null && journals[i].getTitle().equals(j.getTitle())){
+                    for(int k=i ;k<journalCounter-1;k++){
+                        journals[k]=journals[k+1];
+                    }
                     flag = true;
-                    journals[i] = null;
+                    journals[journalCounter-1] = null;
                     journalCounter--;
                     break;
                 }
@@ -185,10 +191,13 @@ public class Member extends Person {
     public boolean returnMagazine(Magazine m){
         boolean flag = false;
         if(magazineCounter != 0){                                        //searchihng jornal, if in member's ocupation
-            for (int i = 0; i < magazines.length; i++) {
+            for (int i = 0; i < magazineCounter; i++) {
                 if (magazines[i]!= null && magazines[i].getMagazineName().equals(m.getMagazineName())){
+                    for(int j = i ;j<magazineCounter-1;j++){
+                        magazines[j]=magazines[j+1];
+                    }
                     flag = true;
-                    magazines[i] = null;
+                    magazines[magazineCounter-1] = null;
                     magazineCounter--;
                     break;
                 }

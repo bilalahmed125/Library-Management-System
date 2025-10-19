@@ -285,12 +285,13 @@ public class Library {
             System.out.println("\n\tLibrarians FILLED! Cant add more Librarians at the moment!");
         }
     }
-    public void removeLibrarian(Librarian lib){
+    public void removeLibrarian(String employeeID){
         if(librarianCounter>0){
             boolean flag = false;
-
+            Librarian lib = null;
             for(int i=0;i<librarianCounter;i++){
-                if(librarians[i]==lib){
+                if(librarians[i].getEmployeeId().equals(employeeID)){
+                    lib = librarians[i];
                     for(int j=i;j<librarianCounter-1;j++){
                         librarians[j]=librarians[j+1];
                     }
@@ -312,21 +313,36 @@ public class Library {
             System.out.println("\n\tNo Librarians to remove!");
         }
     }
-    public void addMember(Member m){
-        if(memberCounter < maxMembers ){
-            members[memberCounter] = m;
-            memberCounter++;
-            System.out.println("\tMember Name: "+ m.getName()+", MemberID: "+m.getMemberId()+", ADDED!");
+    public void addMember(){
+        Scanner sc = new Scanner(System.in);
+
+        if(memberCounter < maxMembers){
+            System.out.println("Enter Member's Name: ");
+            String name = sc.nextLine();
+            System.out.println("Enter MemberID : ");
+            String employeeID = sc.nextLine();
+            System.out.println("Enter Member Age : ");
+            int age = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Member email : ");
+            String email = sc.nextLine();
+
+            members[memberCounter]= new Member(name,employeeID,age,email);          //composition...
+
+            System.out.println("\tMEmber Name: "+ members[memberCounter].getName()+" , MemberID: "+members[memberCounter].getMemberId()+" , ADDED!");
             System.out.println("\n\tMember Added Successfully!");
-        }else{
-            System.out.println("\n\tMembers Filled!Cant Add anymore Members Rightnow!");
+            memberCounter++;
+        }
+        else{
+            System.out.println("\n\tMEMBERS FILLED! Cant add more MEMBERS at the moment!");
         }
     }
-    public void removeMember(Member m){
+    public void removeMember(String memberID){
         if(memberCounter>0){
             boolean flag = false;
+            Member m = null;
             for(int i=0;i<memberCounter;i++){
-                if(members[i]==m){
+                if(members[i].getMemberId().equals(memberID)){
+                    m = members[i];
                     for(int j=i;j<memberCounter-1;j++){
                         members[j]=members[j+1];
                     }
@@ -349,22 +365,38 @@ public class Library {
             System.out.println("\n\tNO Members to Remove!");
         }
     }
-    public void addStudent(Student s){
+    public void addStudent(){
+        Scanner sc = new Scanner(System.in);
+
         if(studentCounter < maxStudents){
-            students[studentCounter] = s;
+            System.out.println("Enter Student's Name: ");
+            String name = sc.nextLine();
+            System.out.println("Enter StudnetID : ");
+            String employeeID = sc.nextLine();
+            System.out.println("Enter Student Department : ");
+            String department = sc.nextLine();
+            System.out.println("Enter Studnet Age : ");
+            int age = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Student email : ");
+            String email = sc.nextLine();
+
+            students[studentCounter]= new Student(name,employeeID,department,age,email);          //composition...
+
+            System.out.println("\tStudent Name: "+ students[studentCounter].getName()+" , StudentID: "+students[studentCounter].getStudentID()+" , ADDED!");
+            System.out.println("\n\tStudnets Added Successfully!");
             studentCounter++;
-            System.out.println("\tStudent Name: "+ s.getName()+", StudnetID: "+s.getStudentID()+", ADDED!");
-            System.out.println("\n\tStudent Added Successfully!");
         }
         else{
-            System.out.println("\n\tStudents Filled!Cant Add anymore Students Right!");
+            System.out.println("\n\tStudnets FILLED! Cant add more Students at the moment!");
         }
     }
-    public void removeStudent(Student s){
+    public void removeStudent(String studentID){
         if(studentCounter>0){
             boolean flag = false;
+            Student s = null;
             for(int i=0;i<studentCounter;i++){
-                if(students[i]==s){
+                if(students[i].getStudentID().equals(studentID)){
+                    s = students[i];
                     for(int j=i;j<studentCounter-1;j++){
                         students[j]=students[j+1];
                     }
@@ -387,22 +419,38 @@ public class Library {
             System.out.println("\n\tNO STUDENTS to Remove!");
         }
     }
-    public void addTeacher(Teacher t){
+    public void addTeacher(){
+        Scanner sc = new Scanner(System.in);
+
         if(teacherCounter < maxTeachers){
-            teachers[teacherCounter] = t;
-            teacherCounter++;
-            System.out.println("\tTeacher Name: "+ t.getName()+", TeacherID: "+t.getTeacherID());
+            System.out.println("Enter Teacher's Name: ");
+            String name = sc.nextLine();
+            System.out.println("Enter TeacherID : ");
+            String employeeID = sc.nextLine();
+            System.out.println("Enter Teacher Department : ");
+            String department = sc.nextLine();
+            System.out.println("Enter Teacher Age : ");
+            int age = sc.nextInt(); sc.nextLine();
+            System.out.println("Enter Teacher email : ");
+            String email = sc.nextLine();
+
+            teachers[teacherCounter]= new Teacher(name,employeeID,department,age,email);          //composition...
+
+            System.out.println("\tTeacher Name: "+ teachers[teacherCounter].getName()+" , TeacherID: "+teachers[teacherCounter].getTeacherID()+" , ADDED!");
             System.out.println("\n\tTeacher Added Successfully!");
+            teacherCounter++;
         }
         else{
-            System.out.println("\n\tTeachers Filled!Cant Add anymore Teachers Right!");
+            System.out.println("\n\tTeachers FILLED! Cant add more Teachers at the moment!");
         }
     }
-    public void removeTeacher(Teacher t){
+    public void removeTeacher(String teacherID){
         if(teacherCounter>0){
             boolean flag = false;
+            Teacher t = null;
             for(int i=0;i<teacherCounter;i++){
-                if(teachers[i]==t){
+                if(teachers[i].getTeacherID().equals(teacherID)){
+                    t = teachers[i];
                     for(int j=i;j<teacherCounter-1;j++){
                         teachers[j]=teachers[j+1];
                     }
