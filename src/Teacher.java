@@ -21,9 +21,6 @@ public class Teacher extends AcademicMember{
     public String getTeacherID() {
         return getAcademicID();
     }
-    public void setTeacherID(String teacherID) {
-        setAcademicID(teacherID);
-    }
     public static int getTotalTeachers() {
         return Teacher.totalTeachers;
     }
@@ -35,16 +32,6 @@ public class Teacher extends AcademicMember{
         System.out.println("\t10% Teacher's Discount!");
         amount = amount - (amount * 0.10);          //10% Teacher discunot
         return amount;
-    }
-
-    @Override
-    public void showDetails(){
-        super.showDetails();
-    }
-
-    @Override
-    public void updateDetails(){
-        super.updateDetails();
     }
 
 }

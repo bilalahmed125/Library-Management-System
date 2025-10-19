@@ -473,13 +473,13 @@ public class Library {
             System.out.println("\n\tNO TEACHERs to Remove!");
         }
     }
-    public void showTotalMembers(){
+    public void showTotalNumberOfMembers(){
         System.out.println("TotalNumber Of members : "+memberCounter);
     }
-    public void showTotalStudents(){
+    public void showTotalNumberOfStudents(){
         System.out.println("TotalNumber of students : "+studentCounter);
     }
-    public void showTotalTeachers(){
+    public void showTotalNumberOfTeachers(){
         System.out.println("TotalNumber of teachers : "+teacherCounter);
     }
     public void showAllBooks(){

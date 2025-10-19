@@ -37,45 +37,57 @@ public class Student extends AcademicMember{
 
     @Override
     public double getDiscount(double amount){
-        System.out.println("\t20% Student Discount!");
         amount = amount - (amount * 0.20);               //20% Student discunot
         return amount;
     }
     @Override
-    public void lostBook(){
-        double price;
-        price = getDiscount(10);
-        System.out.println("Book Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
-        addDueAmount(price);
-        System.out.println("Your due amount is: "+price);
+    public void lostBook(String isbn){
+        super.lostBook(isbn);
 
+        double originalFine = 10;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\tSTUDENT DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
     }
     @Override
-    public void lostJournal(){
-        double price;
-        price = getDiscount(6);
-        System.out.println("Journal Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
-        addDueAmount(price);
-        System.out.println("Your due amount is: "+price);
+    public void lostJournal(String title){
+        super.lostJournal(title);
+
+        double originalFine = 6;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\tSTUDENT DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
     }
     @Override
-    public void lostMagazine(){
-        double price;
-        price = getDiscount(3);
-        System.out.println("Magazine Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
-        addDueAmount(price);
-        System.out.println("Your due amount is: "+price);
+    public void lostMagazine(String name){
+        super.lostMagazine(name);
+
+        double originalFine = 3;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\tSTUDENT DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
     }
 
-    @Override
-    public void showDetails(){
-        super.showDetails();
-    }
-
-    @Override
-    public void updateDetails(){
-        super.updateDetails();
-    }
+//    @Override
+//    public void showDetails;      no need as didnt add or extended the method , so we can use them as is from the parent's calss ;
+//        super.showDetails();
+//    }
+//    @Override
+//    public void updateDetails(){
+//        super.updateDetails();
+//    }
 
 
 }

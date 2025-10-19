@@ -49,9 +49,6 @@ public class Member extends Person {
     public void setBorrowLimit(int borrowLimit){
         this.borrowLimit = borrowLimit;
     }
-    public void addDueAmount(double amount){
-        this.dueAmount += amount;
-    }
     public int getBookCounter(){
         return this.bookCounter;
     }
@@ -68,6 +65,9 @@ public class Member extends Person {
         Member.totalMembers = totalMembers;
     }
 
+    public void addDueAmount(double amount){
+        this.dueAmount += amount;
+    }
     public boolean borrowBook(Book b){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of "+ borrowLimit +" Items Reached! Cant Borrow more Items!");
@@ -215,24 +215,97 @@ public class Member extends Person {
             return false;
         }
     }
-    public void lostBook(){
-        System.out.println("Book Lost Fine is 10$ !");
-        addDueAmount(10);
-        System.out.println("Your due amount is: "+dueAmount);
+    public void lostBook(String isbn ){
+        boolean flag = false;
+        double fine = 10.0;
+        if(bookCounter != 0){                                        //searchihng Book, if in member's occupation
+            for (int i = 0; i < bookCounter; i++){
+                if (books[i]!= null && books[i].getISBN().equals(isbn)){
+                    for(int j = i ;j<bookCounter-1;j++){
+                        books[j]=books[j+1];
+                    }
+                    flag = true;
+                    books[bookCounter-1] = null;
+                    bookCounter--;
+                    break;
+                }
+            }
+            if(flag){
+                System.out.println("\n\tYou Lost Book!");
+                System.out.println("\n\tBook Lost Fine is "+fine+"$ !");
+                addDueAmount(10);
+                System.out.println("Your due amount is: " + dueAmount);
+                return;
+            }else{
+                System.out.println("\n\tCouldnt Find Book with this ISBN! Retry Later!");}
+        }
+        else{
+            System.out.println("\n\tYou havent Borrowed any Book!");
+        }
     }
-    public void lostJournal(){
-        System.out.println("Journal Lost Fine is 6$ !");
-        addDueAmount(6);
-        System.out.println("Your due amount is: "+dueAmount);
-    }
-    public void lostMagazine(){
-        System.out.println("Magazine Lost Fine is 3$ !");
-        addDueAmount(3);
-        System.out.println("Your due amount is: "+dueAmount);
+    public void lostJournal(String title){
+        boolean flag = false;
+        double fine = 6.0 ;
+        if(journalCounter != 0){                                        //searhcing journal, if in member's occpuation
+            for (int i = 0; i < journalCounter; i++){
+                if(journals[i] != null && journals[i].getTitle().equalsIgnoreCase(title)){
+                    for(int j = i ; j < journalCounter-1; j++){
+                        journals[j] = journals[j+1];
+                    }
+                    flag = true;
+                    journals[journalCounter-1] = null;
+                    journalCounter--;
+                    break;
+                }
+            }
+            if(flag){
+                System.out.println("\n\tYou Lost Journal!");
+                System.out.println("\n\tJournal Lost Fine is "+fine+"$ !");
+                addDueAmount(6);
+                System.out.println("Your due amount is: " + dueAmount);
+                return;
+            }else{
+                System.out.println("\n\tCouldnt Find JOURNAL with this Title! Retry Later!");
+            }
+        }
+        else{
+            System.out.println("\n\tYou havent Borrowed any Journal!");
+        }
     }
 
-    public void payDueAmount(int amount) {
-        if (amount > 0 && dueAmount > 0) {
+    public void lostMagazine(String name){
+        boolean flag = false;
+        double fine = 3;
+        if(magazineCounter != 0){                                        //searching magazine, if in member's occupation
+            for (int i = 0; i < magazineCounter; i++){
+                if(magazines[i] != null && magazines[i].getMagazineName().equalsIgnoreCase(name)){
+                    for(int j = i ; j < magazineCounter-1; j++){
+                        magazines[j] = magazines[j+1];
+                    }
+                    flag = true;
+                    magazines[magazineCounter-1] = null;
+                    magazineCounter--;
+                    break;
+                }
+            }
+            if(flag){
+                System.out.println("\n\tYou Lost Magazine!");
+                System.out.println("\n\tMagazine Lost Fine is "+fine+"$ !");
+                addDueAmount(3);
+                System.out.println("Your due amount is: " + dueAmount);
+                return;
+            }else{
+                System.out.println("\n\tCouldnt Find MAGAZINE with this Name! Retry Later!");
+            }
+        }
+        else{
+            System.out.println("\n\tYou havent Borrowed any Magazine!");
+        }
+    }
+
+
+    public void payDueAmount(double amount){
+        if (amount > 0 && dueAmount > 0){
             System.out.println("Your due amount is: " + dueAmount);
             System.out.println("You Paid Amount: " + amount);
             dueAmount -= amount;
