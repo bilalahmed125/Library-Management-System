@@ -64,24 +64,24 @@ public class Book extends Publication{
     @Override
     public void updateDetails(){
         Scanner sc = new Scanner(System.in);
-
         String publicationType = getClass().getSimpleName();
-        System.out.println("Enter " +publicationType + " title: ");
+
+        System.out.print("Enter " +publicationType + " title: ");
         String title = sc.nextLine();
         setTitle(title);
-        System.out.println("Enter " +publicationType + " author: ");
+        System.out.print("Enter " +publicationType + " author: ");
         String author = sc.nextLine();
         setAuthor(author);
-        System.out.println("Enter " +publicationType + " ISBN: ");
+        System.out.print("Enter " +publicationType + " ISBN: ");
         String ISBN = sc.nextLine();
         setISBN(ISBN);
-        System.out.println("Enter " +publicationType + " pages: ");
+        System.out.print("Enter " +publicationType + " pages: ");
         int pages = sc.nextInt();   sc.nextLine();
-        System.out.println("Enter " +publicationType + " language: ");
+        System.out.print("Enter " +publicationType + " language: ");
         String language = sc.nextLine();
-        System.out.println("Enter " +publicationType + " edition: ");
+        System.out.print("Enter " +publicationType + " edition: ");
         int edition = sc.nextInt();
-        System.out.println("Enter "+publicationType+" isAvailable (yes/no): ");
+        System.out.print("Enter "+publicationType+" isAvailable (yes/no): ");
         String available = sc.nextLine();
         boolean isAvailable = available.equalsIgnoreCase("Yes") || available.equalsIgnoreCase("true") ? true : false;
         setIsAvailable(isAvailable);

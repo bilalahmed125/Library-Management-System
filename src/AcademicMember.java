@@ -50,17 +50,18 @@ public abstract class AcademicMember extends Member{
     public void updateDetails(){
         Scanner sc = new Scanner(System.in);
         String memberType = getClass().getSimpleName();
-        System.out.println("Enter "+memberType+" Name: ");
+
+        System.out.print("Enter "+memberType+" Name: ");
         String name = sc.nextLine();
         setName(name);
-        System.out.println("Enter "+memberType+" ID: ");
+        System.out.print("Enter "+memberType+" ID: ");
         this.academicID = sc.nextLine();
-        System.out.println("Enter "+memberType+"'s Department Name: ");
+        System.out.print("Enter "+memberType+"'s Department Name: ");
         this.department = sc.nextLine();
-        System.out.println("Enter "+memberType+" Age: ");
+        System.out.print("Enter "+memberType+" Age: ");
         int age = sc.nextInt();
         setAge(age);   sc.nextLine();
-        System.out.println("Enter "+memberType+" Email: ");
+        System.out.print("Enter "+memberType+" Email: ");
         String email = sc.nextLine();
         setEmail(email);
     }

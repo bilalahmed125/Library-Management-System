@@ -41,7 +41,7 @@ public class Magazine extends Publication{
     public void showDetails(){
         String publicationType = getClass().getSimpleName();
         System.out.println(publicationType + " Name: "+ magazineName );
-        System.out.println(publicationType + " Publish Date: "+ publishDate+"-"+publishMonth+"-"+publishYear);
+        System.out.println(publicationType + " Publish Date: "+ publishDate + "-" + publishMonth + "-" + publishYear);
         System.out.println(publicationType + " ISBN: "+ getISBN() );
         System.out.println(publicationType + " Available: " + (getIsAvailable() ? "Yes" : "No") );
     }
@@ -49,13 +49,23 @@ public class Magazine extends Publication{
     @Override
     public void updateDetails(){
         Scanner sc = new Scanner(System.in);
-
         String publicationType = getClass().getSimpleName();
-        System.out.println("Enter "+ publicationType + " Name: ");
-        this.magazineName = sc.nextLine();
-        System.out.println("Enter "+ publicationType + " Publish Date: ");
-        this.publishDate = sc.nextInt();
 
+        System.out.print("Enter "+ publicationType + " Name: ");
+        this.magazineName = sc.nextLine();
+        System.out.print("Enter "+ publicationType + " Publish Date: ");
+        this.publishDate = sc.nextInt(); sc.nextLine();
+        System.out.print("Enter "+ publicationType + " Publish Month: ");
+        this.publishMonth = sc.nextInt(); sc.nextLine();
+        System.out.print("Enter "+ publicationType + " Publish Year: ");
+        this.publishYear = sc.nextInt(); sc.nextLine();
+        System.out.println("Enter "+publicationType + " ISBN: ");
+        String isbn = sc.nextLine();
+        setISBN(isbn);
+        System.out.println("Enter "+publicationType + " Available (yes/no): ");
+        String available = sc.nextLine();
+        boolean isAvailable = available.equalsIgnoreCase("yes") || available.equalsIgnoreCase("true") ? true : false;
+        setIsAvailable(isAvailable);
     }
 
 }

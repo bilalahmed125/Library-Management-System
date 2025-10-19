@@ -5,6 +5,12 @@ public class Member extends Person {
     private double dueAmount;
     private int monthlyItemsBorrowed;
     private int borrowLimit = 5;
+    private Book[] books = new Book[5];
+    private Journal [] journals = new Journal[5];
+    private Magazine[] magazines = new Magazine[5];
+    private int bookCounter;
+    private int journalCounter;
+    private int magazineCounter;
 
 
     public Member(String name,String memberId){
@@ -46,81 +52,143 @@ public class Member extends Person {
         this.dueAmount += amount;
     }
 
-    public void borrowBook(Book b){
+    public boolean borrowBook(Book b){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of "+ borrowLimit +" Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
+            return false;
         }
         else if(!b.getIsAvailable()){
             System.out.println("Book Not Available! Can't Borrow this Book!");
+            return false;
         }
         else if (dueAmount >0){
             System.out.println("Please Pay Due Amount Before Borrowing Book! Unable to Borrow!");
             System.out.println("Your Due Amount: "+ dueAmount);
+            return false;
         }
-        else{
-            System.out.println("\nBook :"+ b.getTitle() +" , author: "+ b.getAuthor() + " , BORROWED!");
-            monthlyItemsBorrowed++;
-            System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
-            b.setIsAvailable(false);
-        }
-
+        monthlyItemsBorrowed++;
+        b.setIsAvailable(true);
+        books[bookCounter] = b;
+        bookCounter++;
+        return true;
     }
-    public void borrowJournal(Journal j){
+
+    public boolean borrowJournal(Journal j){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of "+ borrowLimit +" Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
+            return false;
         }
         else if(!j.getIsAvailable()){
             System.out.println("Journal Not Available! Can't Borrow this Journal!");
+            return false;
         }
         else if (dueAmount >0){
             System.out.println("Please Pay Due Amount Before Borrowing Journal! Unable to Borrow!");
             System.out.println("Your Due Amount: "+ dueAmount);
+            return false;
         }
-        else{
-            System.out.println("\nJournal :"+ j.getTitle() +" , author: "+ j.getAuthor() + " , BORROWED!");
-            monthlyItemsBorrowed++;
-            System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
-            j.setIsAvailable(false);
-        }
-
+        monthlyItemsBorrowed++;
+        j.setIsAvailable(false);
+        journals[journalCounter] = j;
+        journalCounter++;
+        return true;
     }
-    public void borrowMagazine(Magazine m){
+
+    public boolean borrowMagazine(Magazine m){
         if(this.monthlyItemsBorrowed >= borrowLimit){
             System.out.println("Monthly borrowing Limit of "+ borrowLimit +" Items Reached! Cant Borrow more Items!");
             System.out.println("Please Renew your MemberShip! To reset the Borrowing Limit.");
+            return false;
         }
         else if(!m.getIsAvailable()){
             System.out.println("Magazine Not Available! Can't Borrow this Magazine!");
+            return false;
         }
         else if (dueAmount >0){
             System.out.println("Please Pay Due Amount Before Borrowing Magazine! Unable to Borrow!");
             System.out.println("Your Due Amount: "+ dueAmount);
+            return false;
+        }
+        monthlyItemsBorrowed++;
+        m.setIsAvailable(false);
+        magazines[magazineCounter] = m;
+        magazineCounter++;
+        return true;
+    }
+
+    public boolean returnBook(Book b){
+        boolean flag = false;
+        if(bookCounter != 0){                                        //searchihng book, if in member's ocupation
+            for (int i = 0; i < books.length; i++) {
+                if (books[i]!= null && books[i].getISBN().equals(b.getISBN())){
+                    flag = true;
+                    books[i] = null;
+                    bookCounter --;
+                    break;
+                }
+            }
+            if (flag){
+                b.setIsAvailable(true);
+                return true;
+            } else{
+                System.out.println("\n\tUnable To RETURN BOOK! You Didnt Borrow this Book!");
+                return false;
+            }
         }
         else{
-            System.out.println("\nMagazine :"+ m.getMagazineName() +" , Of Date: "+ m.getPublishDate() + " , BORROWED!");
-            monthlyItemsBorrowed++;
-            System.out.println("Number of Items You BORROWED: "+ monthlyItemsBorrowed );
-            m.setIsAvailable(false);
+            System.out.println("\n\tYou havent Borrowed any book till yet!");
+            return false;
         }
-
     }
-    public void returnBook(Book b){
-        System.out.println("BooK: "+ b.getTitle() +" , author: "+ b.getAuthor() + " , RETURNED!");
-        System.out.println("Thank You for using our Service :)");
-        b.setIsAvailable(true);
-
+    public boolean returnJournal(Journal j){
+        boolean flag = false;
+        if(journalCounter != 0){                                        //searchihng jornal, if in member's ocupation
+            for (int i = 0; i < journals.length; i++) {
+                if (journals[i]!= null && journals[i].getISBN().equals(j.getISBN())){
+                    flag = true;
+                    journals[i] = null;
+                    journalCounter--;
+                    break;
+                }
+            }
+            if (flag){
+                j.setIsAvailable(true);
+                return true;
+            } else{
+                System.out.println("\n\tUnable To RETURN JOURNAL! You Didnt Borrow this Journal!");
+                return false;
+            }
+        }
+        else{
+            System.out.println("\n\tYou havent Borrowed any Journal till yet!");
+            return false;
+        }
     }
-    public void returnJournal(Journal j){
-        System.out.println("Journal: "+ j.getTitle() +" , author: "+ j.getAuthor() + " , RETURNED!");
-        System.out.println("Thank You for using our Service :)");
-        j.setIsAvailable(true);
-    }
-    public void returnMagazine(Magazine m){
-        System.out.println("Magazine: "+ m.getMagazineName() +" , of Date: "+ m.getPublishDate()+"-"+m.getPublishMonth()+"-"+m.getPublishYear() + " , RETURNED!");
-        System.out.println("Thank You for using our Service :)");
-        m.setIsAvailable(true);
+    public boolean returnMagazine(Magazine m){
+        boolean flag = false;
+        if(magazineCounter != 0){                                        //searchihng jornal, if in member's ocupation
+            for (int i = 0; i < magazines.length; i++) {
+                if (magazines[i]!= null && magazines[i].getISBN().equals(m.getISBN())){
+                    flag = true;
+                    magazines[i] = null;
+                    magazineCounter--;
+                    break;
+                }
+            }
+            if (flag){
+                m.setIsAvailable(true);
+                return true;
+            } else{
+                System.out.println("\n\tUnable To RETURN Magazine! You Didnt Borrow this Magazine!");
+                return false;
+            }
+        }
+        else{
+            System.out.println("\n\tYou havent Borrowed any Magazine till yet!");
+            return false;
+        }
     }
     public void renewMemberShip() {
         monthlyItemsBorrowed = 0;
@@ -174,15 +242,16 @@ public class Member extends Person {
     public void updateDetails(){
         Scanner sc = new Scanner(System.in);
         String memberType = getClass().getSimpleName();
-        System.out.println("Enter "+memberType+" Name: ");
+
+        System.out.print("Enter "+memberType+" Name: ");
         String name = sc.nextLine();
         setName(name);
-        System.out.println("Enter "+memberType+" ID: ");
+        System.out.print("Enter "+memberType+" ID: ");
         this.memberId = sc.nextLine();
-        System.out.println("Enter "+memberType+" Age: ");
+        System.out.print("Enter "+memberType+" Age: ");
         int age = sc.nextInt();
         setAge(age);   sc.nextLine();
-        System.out.println("Enter "+memberType+" Email: ");
+        System.out.print("Enter "+memberType+" Email: ");
         String email = sc.nextLine();
         setEmail(email);
     }

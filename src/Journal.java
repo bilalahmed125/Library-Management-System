@@ -52,24 +52,24 @@ public class Journal extends Publication{
     @Override
     public void updateDetails(){
         Scanner sc = new Scanner(System.in);
-
         String publicationType = getClass().getSimpleName();
-        System.out.println("Enter "+publicationType+" title: ");
+
+        System.out.print("Enter "+publicationType+" title: ");
         String title = sc.nextLine();
         setTitle(title);
-        System.out.println("Enter "+publicationType+" author: ");
+        System.out.print("Enter "+publicationType+" author: ");
         String author = sc.nextLine();
         setAuthor(author);
-        System.out.println("Enter "+publicationType+" ISBN: ");
+        System.out.print("Enter "+publicationType+" ISBN: ");
         String ISBN = sc.nextLine();
         setISBN(ISBN);
-        System.out.println("Enter "+publicationType+" year: ");
+        System.out.print("Enter "+publicationType+" year: ");
         int year = sc.nextInt();       sc.nextLine();
         setYear(year);
-        System.out.println("Enter "+publicationType+" field: ");
+        System.out.print("Enter "+publicationType+" field: ");
         String field = sc.nextLine();
         setField(field);
-        System.out.println("Enter "+publicationType+" isAvailable (yes/no): ");
+        System.out.print("Enter "+publicationType+" isAvailable (yes/no): ");
         String available = sc.nextLine();
         boolean isAvailable = available.equalsIgnoreCase("Yes") || available.equalsIgnoreCase("true") ? true : false;
         setIsAvailable(isAvailable);
