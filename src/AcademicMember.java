@@ -33,7 +33,7 @@ public abstract class AcademicMember extends Member{
         this.department = department;
     }
 
-    public abstract double calculateDiscount(double amount);
+    public abstract double getDiscount(double amount);
 
     @Override
     public void showDetails(){

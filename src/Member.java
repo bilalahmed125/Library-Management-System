@@ -51,6 +51,15 @@ public class Member extends Person {
     public void addDueAmount(double amount){
         this.dueAmount += amount;
     }
+    public int getBookCounter(){
+        return this.bookCounter;
+    }
+    public int getJournalCounter(){
+        return this.journalCounter;
+    }
+    public int getMagazineCounter(){
+        return this.magazineCounter;
+    }
 
     public boolean borrowBook(Book b){
         if(this.monthlyItemsBorrowed >= borrowLimit){
@@ -189,13 +198,6 @@ public class Member extends Person {
             System.out.println("\n\tYou havent Borrowed any Magazine till yet!");
             return false;
         }
-    }
-    public void renewMemberShip() {
-        monthlyItemsBorrowed = 0;
-        System.out.println("Member Name: " + getName());
-        System.out.println("Member ID: "+ memberId);
-        System.out.println("MemberxShip Renewed!\nThe BorrowLimit has been Reseted!");
-        System.out.println("Your BorrowLimit : " + monthlyItemsBorrowed);
     }
     public void lostBook(){
         System.out.println("Book Lost Fine is 10$ !");

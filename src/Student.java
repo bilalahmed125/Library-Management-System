@@ -30,7 +30,7 @@ public class Student extends AcademicMember{
     }
 
     @Override
-    public double calculateDiscount(double amount){
+    public double getDiscount(double amount){
         System.out.println("\t20% Student Discount!");
         amount = amount - (amount * 0.20);               //20% Student discunot
         return amount;
@@ -38,7 +38,7 @@ public class Student extends AcademicMember{
     @Override
     public void lostBook(){
         double price;
-        price = calculateDiscount(10);
+        price = getDiscount(10);
         System.out.println("Book Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
         addDueAmount(price);
         System.out.println("Your due amount is: "+price);
@@ -47,7 +47,7 @@ public class Student extends AcademicMember{
     @Override
     public void lostJournal(){
         double price;
-        price = calculateDiscount(6);
+        price = getDiscount(6);
         System.out.println("Journal Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
         addDueAmount(price);
         System.out.println("Your due amount is: "+price);
@@ -55,7 +55,7 @@ public class Student extends AcademicMember{
     @Override
     public void lostMagazine(){
         double price;
-        price = calculateDiscount(3);
+        price = getDiscount(3);
         System.out.println("Magazine Lost Fine is "+ price +"$, (STUDENT DISCOUNT APPLIED!)");
         addDueAmount(price);
         System.out.println("Your due amount is: "+price);

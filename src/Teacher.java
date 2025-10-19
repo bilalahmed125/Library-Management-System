@@ -27,7 +27,7 @@ public class Teacher extends AcademicMember{
     }
 
     @Override
-    public double calculateDiscount(double amount){
+    public double getDiscount(double amount){
         System.out.println("\t10% Teacher's Discount!");
         amount = amount - (amount * 0.10);          //10% Teacher discunot
         return amount;
