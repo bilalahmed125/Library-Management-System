@@ -36,6 +36,49 @@ public abstract class AcademicMember extends Member{
     public abstract double getDiscount(double amount);
 
     @Override
+    public void lostBook(String isbn){
+        super.lostBook(isbn);
+
+        String memberType = getClass().getSimpleName();
+        double originalFine = 10;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\t"+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
+    }
+    @Override
+    public void lostJournal(String title){
+        super.lostJournal(title);
+
+        String memberType = getClass().getSimpleName();
+        double originalFine = 6;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\t "+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
+    }
+    @Override
+    public void lostMagazine(String name){
+        super.lostMagazine(name);
+
+        String memberType = getClass().getSimpleName();
+        double originalFine = 3;
+        double discountedFine = getDiscount(originalFine);
+
+        addDueAmount(-originalFine);
+        addDueAmount(discountedFine);
+
+        System.out.println("\n\t"+memberType+ "DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
+        System.out.println("\n\tYour due amount is: "+getDueAmount());
+    }
+
+    @Override
     public void showDetails(){
         String memberType = getClass().getSimpleName();
         System.out.println(memberType +" Name: "+ getName());
