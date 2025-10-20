@@ -62,7 +62,7 @@ public class Library {
     }
 
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        void addBook() {
+void addBook() {
         if(bookCounter < maxBooks){
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter book Title: ");
@@ -313,20 +313,20 @@ public class Library {
             System.out.println("\n\tNo Librarians to remove!");
         }
     }
-    public void addMember(){
+    public void addMember(Member m){
         Scanner sc = new Scanner(System.in);
 
         if(memberCounter < maxMembers){
-            System.out.println("Enter Member's Name: ");
-            String name = sc.nextLine();
-            System.out.println("Enter MemberID : ");
-            String employeeID = sc.nextLine();
-            System.out.println("Enter Member Age : ");
-            int age = sc.nextInt(); sc.nextLine();
-            System.out.println("Enter Member email : ");
-            String email = sc.nextLine();
-
-            members[memberCounter]= new Member(name,employeeID,age,email);          //composition...
+//            System.out.println("Enter Member's Name: ");
+//            String name = sc.nextLine();
+//            System.out.println("Enter MemberID : ");
+//            String employeeID = sc.nextLine();
+//            System.out.println("Enter Member Age : ");
+//            int age = sc.nextInt(); sc.nextLine();
+//            System.out.println("Enter Member email : ");
+//            String email = sc.nextLine();
+            members[memberCounter]=m;
+            //members[memberCounter]= new Member(name,employeeID,age,email);          //composition...
 
             System.out.println("\tMEmber Name: "+ members[memberCounter].getName()+" , MemberID: "+members[memberCounter].getMemberId()+" , ADDED!");
             System.out.println("\n\tMember Added Successfully!");
@@ -365,22 +365,22 @@ public class Library {
             System.out.println("\n\tNO Members to Remove!");
         }
     }
-    public void addStudent(){
+    public void addStudent(Student s){
         Scanner sc = new Scanner(System.in);
 
         if(studentCounter < maxStudents){
-            System.out.println("Enter Student's Name: ");
-            String name = sc.nextLine();
-            System.out.println("Enter StudnetID : ");
-            String employeeID = sc.nextLine();
-            System.out.println("Enter Student Department : ");
-            String department = sc.nextLine();
-            System.out.println("Enter Studnet Age : ");
-            int age = sc.nextInt(); sc.nextLine();
-            System.out.println("Enter Student email : ");
-            String email = sc.nextLine();
-
-            students[studentCounter]= new Student(name,employeeID,department,age,email);          //composition...
+//            System.out.println("Enter Student's Name: ");
+//            String name = sc.nextLine();
+//            System.out.println("Enter StudnetID : ");
+//            String employeeID = sc.nextLine();
+//            System.out.println("Enter Student Department : ");
+//            String department = sc.nextLine();
+//            System.out.println("Enter Studnet Age : ");
+//            int age = sc.nextInt(); sc.nextLine();
+//            System.out.println("Enter Student email : ");
+//            String email = sc.nextLine();
+              students[studentCounter]=s;
+//            students[studentCounter]= new Student(name,employeeID,department,age,email);          //composition...
 
             System.out.println("\tStudent Name: "+ students[studentCounter].getName()+" , StudentID: "+students[studentCounter].getStudentID()+" , ADDED!");
             System.out.println("\n\tStudnets Added Successfully!");
@@ -419,23 +419,23 @@ public class Library {
             System.out.println("\n\tNO STUDENTS to Remove!");
         }
     }
-    public void addTeacher(){
+    public void addTeacher(Teacher t){
         Scanner sc = new Scanner(System.in);
 
         if(teacherCounter < maxTeachers){
-            System.out.println("Enter Teacher's Name: ");
-            String name = sc.nextLine();
-            System.out.println("Enter TeacherID : ");
-            String employeeID = sc.nextLine();
-            System.out.println("Enter Teacher Department : ");
-            String department = sc.nextLine();
-            System.out.println("Enter Teacher Age : ");
-            int age = sc.nextInt(); sc.nextLine();
-            System.out.println("Enter Teacher email : ");
-            String email = sc.nextLine();
-
-            teachers[teacherCounter]= new Teacher(name,employeeID,department,age,email);          //composition...
-
+//            System.out.println("Enter Teacher's Name: ");
+//            String name = sc.nextLine();
+//            System.out.println("Enter TeacherID : ");
+//            String employeeID = sc.nextLine();
+//            System.out.println("Enter Teacher Department : ");
+//            String department = sc.nextLine();
+//            System.out.println("Enter Teacher Age : ");
+//            int age = sc.nextInt(); sc.nextLine();
+//            System.out.println("Enter Teacher email : ");
+//            String email = sc.nextLine();
+//
+//            teachers[teacherCounter]= new Teacher(name,employeeID,department,age,email);          //composition...
+              teachers[teacherCounter] = t;
             System.out.println("\tTeacher Name: "+ teachers[teacherCounter].getName()+" , TeacherID: "+teachers[teacherCounter].getTeacherID()+" , ADDED!");
             System.out.println("\n\tTeacher Added Successfully!");
             teacherCounter++;
