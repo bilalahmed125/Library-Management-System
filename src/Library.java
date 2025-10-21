@@ -49,12 +49,15 @@ public class Library {
         this.books[0] = new Book("Introduction to Programming","Bilal","BK-001",true,300,"English",1);
         this.books[1] = new Book("Basics of Science","Hassan","BK-002",true,250,"English",2);
         this.books[2] = new Book("Learning Java","Bilal","BK-003",true,400,"English",1);
+        bookCounter = 3;
 
         this.magazines[0] = new Magazine("Monthly Knowledge",10,8,2025);
+        magazineCounter++;
 
         this.journals[0] = new Journal("Student Research Journal","ALI","JR-001",true,2025,"General Studies");
         this.journals[1] = new Journal("Science Insights","Ahmed","JR-002",true,2024,"General Science");
 
+        journalCounter = 2;
         librarianCounter++;
     }
 
@@ -192,7 +195,6 @@ void addBook() {
             if(flag){
                 System.out.println("\n\tBook: "+b.getTitle()+" , author: "+b.getAuthor());
                 System.out.println("\n\tBook Removed Successfully!");
-                Book.setTotalBooks(Book.getTotalBooks()-1);
             }
             else{
                 System.out.println("\n\tUnable to Find Such BOOK! Failed to remove!");
@@ -222,7 +224,6 @@ void addBook() {
             if(flag){
                 System.out.println("\n\tJournal: "+journal.getTitle()+" , author: "+journal.getAuthor());
                 System.out.println("\n\tJournal Removed Successfully!");
-                Journal.setTotalJournals(Journal.getTotalJournals()-1);
             }
             else{
                 System.out.println("\n\tUnable to Find Such JOURNAL! Failed to remove!");
@@ -244,7 +245,6 @@ void addBook() {
                     }
                     magazineCounter--;
                     magazines[magazineCounter]=null;
-                    Magazine.setTotalMagazine(Magazine.getTotalMagazine()-1);
                     flag = true;
                     break;
                 }
@@ -340,7 +340,6 @@ void addBook() {
             if(flag){
                 System.out.println("\tLibrarian Name: " + lib.getName() + " , EmployeeID: " + lib.getEmployeeId());
                 System.out.println("\n\tLibrarian REMOVED Successfully!");
-                Librarian.setTotalLibrarian(Librarian.getTotalLibrarian()-1);
             }
             else{
                 System.out.println("\n\tLibrarian Not FOUND!Cant REmove!");
@@ -392,7 +391,6 @@ void addBook() {
             if(flag) {
                 System.out.println("\tMember Name: " + m.getName() + ", MemberID: " + m.getMemberId());
                 System.out.println("\n\tMember Removed Successfully!");
-                Member.setTotalMembers(Member.getTotalMembers()-1);
             }
             else{
                 System.out.println("\n\tMembers NOT FOUND!Cant REMOVE!");
@@ -439,7 +437,6 @@ void addBook() {
                     }
                     studentCounter--;
                     students[studentCounter]=null;
-                    Student.setTotalStudents(Student.getTotalStudents()-1);
                     flag = true;
                     break;
                 }
@@ -494,7 +491,6 @@ void addBook() {
                     }
                     teacherCounter--;
                     teachers[teacherCounter]=null;
-                    Teacher.setTotalTeachers(Teacher.getTotalTeachers()-1);
                     flag = true;
                     break;
                 }
