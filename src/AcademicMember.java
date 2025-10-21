@@ -43,11 +43,13 @@ public abstract class AcademicMember extends Member{
         double originalFine = 10;
         double discountedFine = getDiscount(originalFine);
 
-        //addDueAmount(-originalFine);
-        addDueAmount(discountedFine);
+        if(getBookCounter()!=0) {
+            //addDueAmount(-originalFine);
+            addDueAmount(discountedFine);
 
-        System.out.println("\n\t"+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
-        System.out.println("\n\tYour due amount is: "+getDueAmount());
+            System.out.println("\n\t" + memberType + " DISCOUNT APPLIED! Original Fine was: " + originalFine + "$ ," + " Discounted Fine is: " + discountedFine + "$");
+            System.out.println("\n\tYour due amount is: " + getDueAmount());
+        }
     }
     @Override
     public void lostJournal(String title){
@@ -57,11 +59,13 @@ public abstract class AcademicMember extends Member{
         double originalFine = 6;
         double discountedFine = getDiscount(originalFine);
 
-        //addDueAmount(-originalFine);
-        addDueAmount(discountedFine);
+        if(getBookCounter()!=0) {
+            //addDueAmount(-originalFine);
+            addDueAmount(discountedFine);
 
-        System.out.println("\n\t "+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
-        System.out.println("\n\tYour due amount is: "+getDueAmount());
+            System.out.println("\n\t " + memberType + " DISCOUNT APPLIED! Original Fine was: " + originalFine + "$ ," + " Discounted Fine is: " + discountedFine + "$");
+            System.out.println("\n\tYour due amount is: " + getDueAmount());
+        }
     }
     @Override
     public void lostMagazine(String name){
@@ -71,11 +75,13 @@ public abstract class AcademicMember extends Member{
         double originalFine = 3;
         double discountedFine = getDiscount(originalFine);
 
-        //addDueAmount(-originalFine);
-        addDueAmount(discountedFine);
+        if(getBookCounter()!=0){
+            //addDueAmount(-originalFine);
+            addDueAmount(discountedFine);
 
-        System.out.println("\n\t"+memberType+ "DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
-        System.out.println("\n\tYour due amount is: "+getDueAmount());
+            System.out.println("\n\t" + memberType + "DISCOUNT APPLIED! Original Fine was: " + originalFine + "$ ," + " Discounted Fine is: " + discountedFine + "$");
+            System.out.println("\n\tYour due amount is: " + getDueAmount());
+        }
     }
 
     @Override

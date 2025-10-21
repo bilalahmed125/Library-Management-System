@@ -267,7 +267,7 @@ public class Library {
         if(bookCounter>0){
             for(int i=0;i<bookCounter;i++){
                 if(books[i].getTitle().equalsIgnoreCase(title)){
-                    System.out.println("\n\tBook: "+title+" , author: "+books[i].getAuthor());
+                    System.out.println("\n\tBook: "+title+" , author: "+books[i].getAuthor()+" , ISBN: "+books[i].getISBN()+" , Avialibility: "+books[i].getIsAvailable());
                     System.out.println("\t\tBook FOUND!");
                     found = true;
                 }
@@ -276,7 +276,7 @@ public class Library {
         if(journalCounter>0){
             for(int i=0;i<journalCounter;i++){
                 if(journals[i].getTitle().equalsIgnoreCase(title)){
-                    System.out.println("\n\tJournal: "+title+" , author: "+journals[i].getAuthor());
+                    System.out.println("\n\tJournal: "+title+" , author: "+journals[i].getAuthor()+" , ISBN: "+journals[i].getISBN()+" , Avialibility: "+journals[i].getIsAvailable());
                     System.out.println("\t\tJournal FOUND!");
                     found = true;
                 }
@@ -285,7 +285,7 @@ public class Library {
         if(magazineCounter>0){
             for(int i=0;i<magazineCounter;i++){
                 if(magazines[i].getMagazineName().equalsIgnoreCase(title)){
-                    System.out.println("\n\tMagazine: "+magazines[i].getMagazineName()+" , author: "+magazines[i].getPublishDate()+"-"+magazines[i].getPublishMonth()+"-"+magazines[i].getPublishYear());
+                    System.out.println("\n\tMagazine: "+magazines[i].getMagazineName()+" , Publish Date: "+magazines[i].getPublishDate()+"-"+magazines[i].getPublishMonth()+"-"+magazines[i].getPublishYear()+" ,Availibility: "+magazines[i].getIsAvailable());
                     System.out.println("\t\tMagazine FOUND!");
                     found = true;
                 }

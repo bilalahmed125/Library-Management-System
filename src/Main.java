@@ -6,15 +6,20 @@ public class Main{
 
         Library lib = new Library("POF Library","Main Campus",12345678,"POF@library.com");
 
-        Student[] students = new Student[5];        //will aggregrate
+                                        //will aggregrate
+
+        Student[] students = new Student[30];               //STUDENT ARRAY(LIMIT 30)
+
         students[0] = new Student("Ahmed Ali","STD-001","Computer Science",20,"ahmed@student.com");
         students[1] = new Student("hassan Khan","STD-002","Software Engineering",19,"hassan@student.com");
 
-        Teacher[] teachers = new Teacher[5];
+        Teacher[] teachers = new Teacher[20];             //TEACHER ARRAY (LIMIT 20)
+
         teachers[0] = new Teacher("Dr Bilal","TCH-001","Computer Science",45,"Bilal@teacher.com");
         teachers[1] = new Teacher("Dr Ali","TCH-002","Mathematics",38,"Ali@teacher.com");
 
-        Member[] members = new Member[5];
+        Member[] members = new Member[40];              //MemBEr ARRAY (LIMIT 40)
+
         members[0] = new Member("Ali Raza","MEM-001",30,"ali@gmail.com");
         members[1] = new Member("Bilal Ahmed","MEM-002",28,"bilal@gmail.com");
         members[2] = new Member("Akbar Ali","MEM-003",50,"akbar@gmail.com");
@@ -23,7 +28,7 @@ public class Main{
         int teacherCounter = 2;
         int memberCounter = 3;
 
-        // Add members to library   
+
         lib.addStudent(students[0]);
         lib.addStudent(students[1]);
         lib.addTeacher(teachers[0]);
@@ -61,7 +66,7 @@ public class Main{
                     boolean found = false;
                     for(int i = 0; i < Librarian.getTotalLibrarian(); i++){
                         String libID = lib.getLibrarians(i).getEmployeeId();
-                        if(libID.equals(Id)){
+                        if(libID.equalsIgnoreCase(Id)){
                             System.out.println("\n\tLibrarian verified!");
                             found = true;
                             currentLibrarian = lib.getLibrarians(i);
@@ -305,12 +310,12 @@ public class Main{
                 case 2:
                     System.out.println("\n\n\n\t\t-----Welcome to Student Portal-----");
                     flag = false;
-
+                    lib.showAllStudents();
                     System.out.print("Enter Student ID: ");
                     String stdId = sc.nextLine();
                     Student currentStudent = null;
                     for(int i=0; i<studentCounter; i++){
-                        if(students[i].getStudentID().equals(stdId)){
+                        if(students[i].getStudentID().equalsIgnoreCase(stdId)){
                             currentStudent = students[i];
                             break;
                         }
@@ -515,11 +520,12 @@ public class Main{
                     System.out.println("\n\n\n\t\t-----Welcome to Teacher Portal-----");
                     flag = false;
 
+                    lib.showAllTeachers();
                     System.out.print("Enter Teacher ID: ");
                     String tchId = sc.nextLine();
                     Teacher currentTeacher = null;
                     for(int i=0; i<teacherCounter; i++){
-                        if(teachers[i].getTeacherID().equals(tchId)){
+                        if(teachers[i].getTeacherID().equalsIgnoreCase(tchId)){
                             currentTeacher = teachers[i];
                             break;
                         }
@@ -720,6 +726,7 @@ public class Main{
                     System.out.println("\n\n\n\t\t-----Welcome to Member Portal-----");
                     flag = false;
 
+                    lib.showAllMembers();
                     System.out.print("Enter Member ID: ");
                     String memId = sc.nextLine();
                     Member currentMember = null;
@@ -767,7 +774,7 @@ public class Main{
                                 isbn = sc.nextLine();
                                 foundBook = false;
                                   for(int i = 0; i < lib.getBookCounter(); i++  ){
-                                    if(isbn.equals(lib.getBook(i).getISBN())  ){
+                                    if(isbn.equalsIgnoreCase(lib.getBook(i).getISBN())  ){
                                         System.out.println("\n\tBook Found!");
                                         currentLibrarian.issueBook(currentMember, lib.getBook(i));
                                         foundBook = true;
