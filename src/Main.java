@@ -75,7 +75,7 @@ public class Main{
 
                     flag = false;
                     while(true){
-                        if(flag == true) break;
+                        if(flag) break;
 
                         System.out.println("\n\t---Library Menu---");
                         System.out.println("1. Add Book.");
@@ -324,7 +324,7 @@ public class Main{
                     System.out.println("Welcome, " + currentStudent.getName() + "!");
 
                     while(true){
-                        if(flag == true) break;
+                        if(flag) break;
 
                         System.out.println("\n\t---Student Menu---");
                         System.out.println("1. Borrow Book.");
@@ -533,7 +533,7 @@ public class Main{
                     System.out.println("Welcome, " + currentTeacher.getName() + "!");
 
                     while(true){
-                        if(flag == true) break;
+                        if(flag) break;
 
                         System.out.println("\n\t---Teacher Menu---");
                         System.out.println("1. Borrow Book.");
@@ -738,7 +738,7 @@ public class Main{
                     System.out.println("Welcome, " + currentMember.getName() + "!");
 
                     while(true){
-                        if(flag == true) break;
+                        if(flag) break;
 
                         System.out.println("\n\t---Member Menu---");
                         System.out.println("1. Borrow Book.");

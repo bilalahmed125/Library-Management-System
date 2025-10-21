@@ -95,6 +95,4 @@ public class Book extends Publication{
         setIsAvailable(isAvailable);
     }
 
-
-
 }

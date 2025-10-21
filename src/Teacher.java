@@ -33,5 +33,4 @@ public class Teacher extends AcademicMember{
         amount = amount - (amount * 0.10);          //10% Teacher discunot
         return amount;
     }
-
 }

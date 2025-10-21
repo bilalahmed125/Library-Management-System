@@ -83,5 +83,4 @@ public class Magazine extends Publication{
         boolean isAvailable = available.equalsIgnoreCase("yes") || available.equalsIgnoreCase("true") ? true : false;
         setIsAvailable(isAvailable);
     }
-
 }

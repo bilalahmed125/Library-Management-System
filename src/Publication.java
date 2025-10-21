@@ -52,5 +52,4 @@ public abstract class Publication {
     public abstract void showDetails();
     public abstract void updateDetails();
 
-
 }

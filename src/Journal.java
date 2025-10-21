@@ -82,4 +82,5 @@ public class Journal extends Publication{
         boolean isAvailable = available.equalsIgnoreCase("Yes") || available.equalsIgnoreCase("true") ? true : false;
         setIsAvailable(isAvailable);
     }
+
 }

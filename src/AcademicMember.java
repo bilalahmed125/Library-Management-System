@@ -108,4 +108,5 @@ public abstract class AcademicMember extends Member{
         String email = sc.nextLine();
         setEmail(email);
     }
+
 }

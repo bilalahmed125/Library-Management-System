@@ -97,7 +97,7 @@ public class Library {
 
 
 
-void addBook() {
+    void addBook() {
         if(bookCounter < maxBooks){
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter book Title: ");

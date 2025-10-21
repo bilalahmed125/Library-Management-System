@@ -164,5 +164,4 @@ public class Librarian extends Person{
         System.out.println("Enter"+ memberType +"Salary: ");
         this.salary = sc.nextDouble(); sc.nextLine();
     }
-
 }
