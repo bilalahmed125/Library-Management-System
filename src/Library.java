@@ -45,6 +45,16 @@ public class Library {
         this.libraryContact = libraryContact;
         this.libraryEmail = libraryEmail;
         this.librarians[0] = new Librarian("Ali Khan","LIB-123",22,"alikhan123@gmail.com",50000);
+
+        this.books[0] = new Book("Introduction to Programming","Bilal","BK-001",true,300,"English",1);
+        this.books[1] = new Book("Basics of Science","Hassan","BK-002",true,250,"English",2);
+        this.books[2] = new Book("Learning Java","Bilal","BK-003",true,400,"English",1);
+
+        this.magazines[0] = new Magazine("Monthly Knowledge",10,8,2025);
+
+        this.journals[0] = new Journal("Student Research Journal","ALI","JR-001",true,2025,"General Studies");
+        this.journals[1] = new Journal("Science Insights","Ahmed","JR-002",true,2024,"General Science");
+
         librarianCounter++;
     }
 
@@ -54,12 +64,34 @@ public class Library {
     public String getLibraryAddress(){
         return libraryAddress;
     }
-    public int getLibraryContact(){
-        return libraryContact;
+    public Librarian getLibrarians(int i){
+        return librarians[i];
+    }
+    public Book getBook(int i){
+        return books[i];
+    }
+    public Journal getJournal(int i){
+        return journals[i];
+    }
+    public Magazine getMagazine(int i){
+        return magazines[i];
     }
     public String getLibraryEmail(){
         return libraryEmail;
     }
+    public int getLibraryContact(){
+        return libraryContact;
+    }
+    public int getBookCounter(){
+        return bookCounter;
+    }
+    public int getJournalCounter(){
+        return journalCounter;
+    }
+    public int getMagazineCounter(){
+        return magazineCounter;
+    }
+
 
 
 void addBook() {
@@ -152,6 +184,7 @@ void addBook() {
                     }
                     bookCounter--;
                     books[bookCounter]=null;
+                    Book.setTotalBooks(Book.getTotalBooks()-1);
                     flag = true;
                     break;
                 }
@@ -182,6 +215,7 @@ void addBook() {
                     journalCounter--;
                     journals[journalCounter]=null;
                     flag = true;
+                    Journal.setTotalJournals(Journal.getTotalJournals()-1);
                     break;
                 }
             }
@@ -210,6 +244,7 @@ void addBook() {
                     }
                     magazineCounter--;
                     magazines[magazineCounter]=null;
+                    Magazine.setTotalMagazine(Magazine.getTotalMagazine()-1);
                     flag = true;
                     break;
                 }
@@ -297,6 +332,7 @@ void addBook() {
                     }
                     librarianCounter--;
                     flag = true;
+                    Librarian.setTotalLibrarian(Librarian.getTotalLibrarian()-1);
                     librarians[librarianCounter]=null;
                     break;
                 }
@@ -349,6 +385,7 @@ void addBook() {
                     memberCounter--;
                     members[memberCounter]=null;
                     flag = true;
+                    Member.setTotalMembers(Member.getTotalMembers()-1);
                     break;
                 }
             }
@@ -402,6 +439,7 @@ void addBook() {
                     }
                     studentCounter--;
                     students[studentCounter]=null;
+                    Student.setTotalStudents(Student.getTotalStudents()-1);
                     flag = true;
                     break;
                 }
@@ -456,6 +494,7 @@ void addBook() {
                     }
                     teacherCounter--;
                     teachers[teacherCounter]=null;
+                    Teacher.setTotalTeachers(Teacher.getTotalTeachers()-1);
                     flag = true;
                     break;
                 }

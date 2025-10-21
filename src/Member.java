@@ -20,12 +20,18 @@ public class Member extends Person {
         this(name,memberId,age,"N/A");
     }
     public Member(String name,String memberId, int age, String email){
+        this(name,memberId,age,email,true);
+    }
+    public Member(String name,String memberId, int age, String email, boolean increment){
         super(name,age,email);
         this.memberId = memberId;
-        totalMembers++;
+        if(increment){
+            totalMembers++;
+        }
     }
 
     public void setMemberId(String memberId){
+
         this.memberId = memberId;
     }
     public String getMemberId(){
@@ -218,8 +224,8 @@ public class Member extends Person {
     public void lostBook(String isbn ){
         boolean flag = false;
         double fine = 10.0;
-        if(bookCounter != 0){                                        //searchihng Book, if in member's occupation
-            for (int i = 0; i < bookCounter; i++){
+        if(bookCounter != 0){
+            for (int i = 0; i < bookCounter; i++){                              //searchihng Book, if in member's occupation
                 if (books[i]!= null && books[i].getISBN().equals(isbn)){
                     for(int j = i ;j<bookCounter-1;j++){
                         books[j]=books[j+1];

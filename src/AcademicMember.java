@@ -15,7 +15,7 @@ public abstract class AcademicMember extends Member{
         this(name,academicID,department,age,"N/A");
     }
     public AcademicMember(String name, String academicID, String department, int age, String email){
-        super(name, academicID, age, email);
+        super(name, academicID, age, email,false);
         this.academicID = academicID;
         this.department = department;
     }
@@ -43,7 +43,7 @@ public abstract class AcademicMember extends Member{
         double originalFine = 10;
         double discountedFine = getDiscount(originalFine);
 
-        addDueAmount(-originalFine);
+        //addDueAmount(-originalFine);
         addDueAmount(discountedFine);
 
         System.out.println("\n\t"+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
@@ -57,7 +57,7 @@ public abstract class AcademicMember extends Member{
         double originalFine = 6;
         double discountedFine = getDiscount(originalFine);
 
-        addDueAmount(-originalFine);
+        //addDueAmount(-originalFine);
         addDueAmount(discountedFine);
 
         System.out.println("\n\t "+memberType+" DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
@@ -71,7 +71,7 @@ public abstract class AcademicMember extends Member{
         double originalFine = 3;
         double discountedFine = getDiscount(originalFine);
 
-        addDueAmount(-originalFine);
+        //addDueAmount(-originalFine);
         addDueAmount(discountedFine);
 
         System.out.println("\n\t"+memberType+ "DISCOUNT APPLIED! Original Fine was: "+originalFine +"$ ,"+" Discounted Fine is: "+discountedFine+"$");
